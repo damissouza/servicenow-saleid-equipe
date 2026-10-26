@@ -6,3 +6,4 @@
 - O painel fica em https://historico-venda-ativa.vercel.app. Use somente a importacao autenticada `/api/historico/importar`; nunca substituir o historico inteiro de colegas.
 - Nao executar resolucoes reais durante testes. Testar com mocks, arquivos temporarios e rede externa bloqueada.
 - Documentar qualquer adaptacao em ORIGEM.md. Nao modificar o projeto original ao trabalhar nesta copia.
+- Apos cada alteracao solicitada, validada e revisada quanto a privacidade, criar commit e enviar para origin/main. Nunca usar force push. Se nao conseguir enviar, informar o impedimento.
