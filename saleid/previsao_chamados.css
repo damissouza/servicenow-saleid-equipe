@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Ubuntu:wght@500;700&display=swap');
+:root{color-scheme:light;--green:#084f43;--lime:#a6ff00;--orange:#eb5a00}
+*{box-sizing:border-box}body{margin:0;background:#f5f7f5;color:#434343;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px}
+main{max-width:1240px;margin:40px auto;padding:32px;background:white;border-radius:16px;border-top:8px solid var(--green)}
+h1{font-family:Ubuntu,Arial,sans-serif;color:var(--green);font-size:30px;margin:0 0 16px}.total{display:inline-block;background:var(--green);color:var(--lime);padding:10px 20px;border-radius:32px;margin:0 0 24px;font-weight:600}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%}th{background:var(--green);color:white;font-weight:600;text-align:left}th,td{padding:14px 16px;border-bottom:1px solid #e0e7e3;vertical-align:top}tbody tr:nth-child(even){background:#f6faf7}td:nth-child(1),td:nth-child(3),td:nth-child(4),td:nth-child(5){white-space:nowrap}
+@media(max-width:700px){main{margin:12px;padding:18px}h1{font-size:24px}}@media print{body{background:white}main{margin:0;border:0;padding:0}.table-wrap{overflow:visible}thead{display:table-header-group}tr{break-inside:avoid}}

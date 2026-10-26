@@ -1,0 +1,7 @@
+{
+  "instance_url": "",
+  "connection_mode": "cdp",
+  "cdp_url": "http://127.0.0.1:9222",
+  "browser": "chrome",
+  "profile_dir": ""
+}

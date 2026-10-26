@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.env*
+.gcm/
+.brave_perfil/
+saleid/config_*.json
+!saleid/config_*.example.json
+saleid/resposta_resolucao.txt
+saleid/incidentes.txt
+saleid/.execution.lock
+saleid/saida/
+saleid/backups/
+*.log
+.testes_locais/

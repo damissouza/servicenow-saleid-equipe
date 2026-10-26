@@ -1,0 +1,20 @@
+{
+  "assignee_email": "",
+  "numbers_file": "incidentes.txt",
+  "response_file": "resposta_resolucao.txt",
+  "reference_incident": "",
+  "state_label": "Resolvido(a)",
+  "resolution_code_label": "Anotações de resolução",
+  "resolution_option_label": "Tarja Amarela - Erro ao alterar forma de cobrança Base inativa Motor RCE",
+  "recurrent_label": "Sim",
+  "max_incidents": 200,
+  "plan_max_age_minutes": 120,
+  "reference_ritm": "",
+  "ritm_close_notes": "Tarja Amarela - Erro ao alterar forma de cobrança Base inativa Motor RCE",
+  "resolution_confirmed_markers": [
+    "Venda ativa"
+  ],
+  "selection_tag_references": {
+    "Venda ativa": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "matricula_selectors": [
+    "input[name=\"variables.matricula\"]",
+    "input[name=\"variables.enter_the_members_registration_number\"]",
+    "input[name*=\"matricula\" i]",
+    "input[name*=\"registration_number\" i]"
+  ],
+  "matricula_labels": [
+    "^Matr[íi]cula(?: do (?:titular|filiado|associado))?\\s*[:*]?(?:\\. Este campo.*)?$"
+  ],
+  "franquia_selectors": [
+    "input[name=\"variables.u_franchise\"]"
+  ],
+  "franquia_labels": [
+    "^(?:Nome da franquia|Franquia)\\s*[:*]?(?:\\. Este campo.*)?$"
+  ]
+}

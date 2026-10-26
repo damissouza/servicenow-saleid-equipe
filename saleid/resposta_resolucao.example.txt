@@ -1,0 +1,8 @@
+Olá, franquia, tudo joia?
+
+Em validação, identificamos o erro e estamos em tratativa de correção. Como medida paliativa, inseri um novo contrato de mensalidade na forma de pagamento boleto e desativei o contrato anterior, permitindo que a franquia realize posteriormente a alteração para a forma de pagamento desejada. Deve ser alterado para uma forma de pagamento válida, sendo Cartão de Crédito, Cartão de Débito ou Concessionária de Energia.
+Essa atualização pode levar até 24 horas para ser refletida no CTN. Após esse período, orientamos que realizem a alteração da forma de pagamento e validem se o procedimento foi concluído corretamente.
+
+Valorizamos sua opinião! Reserve um momento para avaliar essa solicitação e compartilhar sua experiência conosco.
+Estou à disposição se precisar novamente.
+Atenciosamente, {{NOME_ANALISTA}}.
