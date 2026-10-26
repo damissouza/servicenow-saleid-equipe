@@ -28,3 +28,7 @@ Arquivos copiados do modulo de historico do projeto existente. Nenhum arquivo de
 `validar_previsao.py` contem somente FIELDS e a funcao pura differences, copiados do validador existente de fluxo_unico para manter o teste de comparacao; nao inclui comandos de validacao ou acesso a navegador.
 
 O favicon e o mesmo recurso estatico do painel existente; o configurador copia-o para a saida local dos relatorios.
+
+## Integracao automatica posterior
+
+`processar_chamados.py` chama o publicador somente apos gravar o historico confirmado/revisado. `revisar_historico.py` chama o mesmo publicador apos GRAVAR. `publicar_site.py` reutiliza a autenticacao e a importacao adicionadas na distribuicao inicial, com status local sem senha, preservacao de incompletos e retomada sem ServiceNow. `publicar_resultados.py` e um adaptador para essa mesma implementacao. Os hashes acima documentam a base de origem anterior a essas adaptacoes. Nenhuma regra de resolucao, escolha de SCTASK, conferencia de matricula ou envio ao ServiceNow foi alterada por esses ganchos.

@@ -115,34 +115,29 @@ O modo sem `--pendentes` permite complementar/corrigir pela tabela, com a coluna
 
 Isso **não resolve novamente** os chamados. As datas de resolução vêm das confirmações do ServiceNow; não são substituídas pela hora do lote. As regras de backup e diário são as mesmas do original.
 
-## 9. Enviar ao nosso site
+## 9. Publicacao automatica no nosso site
 
-Esta distribuição usa um publicador próprio: **não precisa instalar sincronizador local para enviar os resultados**.
+Depois de `aplicar` confirmar as resolucoes e de voce preencher a tabela e digitar **GRAVAR**, o fluxo publica automaticamente no painel privado. Nao e necessario clicar no site nem executar outro comando para o envio normal.
 
-Primeiro confira o arquivo local sem conexão de rede:
+O terminal solicita a **senha da equipe no painel** com entrada oculta, sem salva-la. O e-mail usado e `assignee_email`. Nao informe a senha do ServiceNow. Nenhum token do Blob ou segredo de servidor e distribuido neste repositorio.
+
+O envio acrescenta novos pares chamado + matricula, preserva os dos colegas e recusa dados divergentes ou alteracao concorrente. Mantem backup e controle de versao no servidor. Registros antigos sem matricula/data permanecem no arquivo local e nao bloqueiam os completos nem sao removidos do painel.
+
+Se a revisao estiver pendente, nao ha envio. Ao retomar `revisar_historico.py` e confirmar GRAVAR, a publicacao tambem e chamada automaticamente.
+
+Se o envio falhar, for cancelado ou nao puder ser confirmado, o status fica em `saleid/saida/publicacao_site.json`. O historico e o diario de resolucao sao preservados. Nao repita aplicar para corrigir uma publicacao: retome SOMENTE o envio:
 
 ```powershell
-& ".\.venv\Scripts\python.exe" .\publicar_resultados.py --conferir
+& ".\.venv\Scripts\python.exe" .\saleid\publicar_site.py
 ```
 
-Depois publique:
+Para conferir localmente sem rede nem gravacao:
 
 ```powershell
-& ".\.venv\Scripts\python.exe" .\publicar_resultados.py
+& ".\.venv\Scripts\python.exe" .\saleid\publicar_site.py --conferir
 ```
 
-O programa mostra contagens, pede `PUBLICAR`, solicita e-mail autorizado e a senha do painel sem exibi-la/salvá-la. O destino é fixo: **https://historico-venda-ativa.vercel.app**. O envio transmite os dados reais do histórico para o painel privado da equipe, usando a mesma autenticação já existente.
-
-Por baixo, o programa lê a versão compartilhada e chama `/api/historico/importar`. A importação:
-
-- acrescenta novos pares chamado + matrícula;
-- não remove registros dos colegas nem duplica reenvios;
-- complementa campos antes vazios, sem apagar valores já preenchidos;
-- recusa divergência em campo já preenchido e recusa alteração concorrente;
-- mantém backup antes da escrita e os últimos 30 backups no servidor;
-- não reenvia automaticamente uma escrita que falhou.
-
-Se houver conflito, confira com a responsável antes de reenviar. O publicador não corrige silenciosamente informações já publicadas. Abra o painel e clique em **Atualizar histórico** para ver a versão compartilhada. O e-mail de acesso ao painel e o de atribuição têm funções diferentes; o primeiro precisa constar na lista privada de autorizados.
+`publicar_resultados.py` permanece como entrada alternativa para a mesma publicacao. A senha nao fica na fila de publicacao; a retomada pede novamente. O destino continua fixo: https://historico-venda-ativa.vercel.app. A API `/api/historico/importar` nao substitui o historico inteiro. Depois da publicacao confirmada, use **Atualizar historico** no site para recarregar a tela compartilhada.
 
 ## 10. Configurações — campos existentes
 
@@ -154,7 +149,8 @@ Consulte [CONFIGURACAO.md](CONFIGURACAO.md) para a tabela de todas as chaves. Os
 |---|---|
 | `configurar.py` | Cria configurações e resposta locais; sem acesso de rede. |
 | `abrir_brave.ps1` | Abre Brave com perfil dedicado e CDP local. |
-| `publicar_resultados.py` | Confere e importa resultados revisados no site privado. |
+| `publicar_resultados.py` | Entrada alternativa para o publicador local. |
+| `saleid/publicar_site.py` | Publicacao automatica apos GRAVAR, status e retomada somente do envio. |
 | `saleid/processar_chamados.py` | Entrada para prever e aplicar. |
 | `saleid/resolver_incidentes.py` | Regras de resolução, validação da prévia e diário. |
 | `saleid/inspecionar_matriculas.py` | Leitura dos campos, descrição e comentários, conforme o original. |

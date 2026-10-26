@@ -51,3 +51,8 @@ Modelo: `saleid/config_resolucao.example.json`.
 `resolver_incidentes.settings` carrega config_resolucao e config_conexao, a lista e a resposta. `processar_chamados.inspect_for_preview` carrega config_inspecao. `resolve_user` resolve assignee_email no ServiceNow. `--tipo inc` e `--tipo ritm` usam previas separadas; nenhum arquivo deve ser copiado de uma pessoa para outra depois de preparado.
 
 A senha da equipe e solicitada somente por `publicar_resultados.py` com entrada oculta, nao faz parte destes JSONs e nao deve ser adicionada a nenhum arquivo. O endereco do painel esta fixo na constante SITE do publicador, evitando envio acidental para outro servidor.
+
+
+## Publicacao automatica
+
+O e-mail da publicacao usa assignee_email. Se a conta autorizada no painel for diferente da atribuicao, a chave opcional panel_email no config_resolucao.json define apenas o acesso ao painel, sem alterar o responsavel no ServiceNow. A senha e solicitada no terminal e nunca deve ser incluida no JSON. Nenhuma chave nova e obrigatoria para ativar a publicacao.

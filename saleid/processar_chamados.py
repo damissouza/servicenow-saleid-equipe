@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import html
 from pathlib import Path
 import sys
+import publicar_site as site
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
@@ -137,12 +138,18 @@ def run(client, connection, config, numbers, phase, workers=1):
     except (Exception, KeyboardInterrupt) as exc:
         error = str(exc) or 'Execução interrompida pelo usuário.'
     after = base.read_json(resolver.LEDGER) if resolver.LEDGER.exists() else {}
+    added = 0
     try:
         added=history.update(ROOT,config,plan,before,after,client=client)
         if added:
             print('Histórico de Venda Ativa atualizado: saida/historico_venda_ativa.html',flush=True)
     except Exception as exc:
         error=(error+' | ' if error else '')+'Falha ao atualizar o histórico local: '+str(exc)+'. As confirmações estão no diário; não repita escritas no ServiceNow para corrigir o arquivo.'
+    if added:
+        try:
+            site.synchronize(ROOT, config)
+        except site.PublicationPending as exc:
+            error = (error + ' | ' if error else '') + str(exc)
     report(plan, phase, error, before, after)
     return 2 if error else 0
 

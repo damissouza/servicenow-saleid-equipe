@@ -4,6 +4,7 @@ import sys
 import processar_chamados as app
 import historico_venda_ativa as history
 from tabela_historico import review_table
+import publicar_site as site
 
 
 def main():
@@ -17,11 +18,13 @@ def main():
             count=history.review_pending(app.ROOT)
             print(f'Histórico atualizado: {count} registros revisados. Nenhum chamado alterado.')
         else:
-            review_table(app.ROOT)
+            count=review_table(app.ROOT)
+        if count:
+            site.synchronize(app.ROOT)
 
 
 if __name__=='__main__':
     try:main()
-    except (app.base.Stop,OSError,ValueError,KeyError,EOFError,KeyboardInterrupt) as exc:
+    except (app.base.Stop,site.PublicationPending,OSError,ValueError,KeyError,EOFError,KeyboardInterrupt) as exc:
         print('Interrompido: '+str(exc),file=sys.stderr)
         raise SystemExit(2)
